@@ -1,0 +1,11 @@
+{
+    "verbose": true,
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules",
+        "/^.*.(?!docx$)[^.]+$/",
+        "**log.tmp",
+        "C:/DumpStack.log.tmp"
+    ],
+    "delay": 10000
+}
