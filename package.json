@@ -1,0 +1,16 @@
+{
+    "name": "simplegym",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node src/app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Felix Membrive <felix.membrive@gmail.com>",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.1"
+    }
+}
