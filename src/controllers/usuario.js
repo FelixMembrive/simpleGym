@@ -1,16 +1,9 @@
+const { Usuario, Treino } = require("../models")
+
 const UsuarioController = {
-    index: (req, res) => {
-        res.json([{
-            id: `1`,
-            nome: "Felix",
-            email: "felix@gmail.com",
-            senha: "xxxx"
-        }, {
-            id: `2`,
-            nome: "Felipe",
-            email: "felipe@gmail.com",
-            senha: "xxx2"
-        }, ]);
+    index: async(req, res) => {
+        const listarUsuarios = await Usuario.findAll({ include: Treino });
+        res.json(listarUsuarios);
     },
     store: (req, res) => {
         res.json(req.body);
@@ -25,6 +18,30 @@ const UsuarioController = {
             senha: "xxx2"
         });
     },
+
+    show: async(req, res) => {
+        const { id } = req.params;
+
+        try {
+            const usuario = await Usuario.findByPk(id, { include: Treino });
+
+            if (usuario) {
+                return res.json(usuario);
+            }
+
+            res.status(404).json({
+                message: "Cliente não encontrado",
+            });
+        } catch (error) {
+            res
+                .status(500)
+                .json({ error: "Oops, tivemos um erro, tente novamente." });
+        }
+    },
+
+
+
+
     update: (req, res) => {
         const { id } = req.params;
 

@@ -1,14 +1,16 @@
-const { Treino } = require("../models/")
+const { DiaTreino, Treino } = require("../models/")
 
-const TreinoController = {
+const DiaTreinoController = {
     index: async(req, res) => {
-        const listarTreinos = await Treino.findAll();
-        res.json(listarTreinos);
+        // const listarDiaTreinos = await DiaTreino.findAll({ include: Treino });
+        const listarDiaTreinos = await DiaTreino.findAll();
+        res.json(listarDiaTreinos);
     },
 
     store: (req, res) => {
         res.json(req.body);
     },
+
     show: (req, res) => {
         const { id } = req.params;
 
@@ -18,6 +20,7 @@ const TreinoController = {
             usuario_id: "2"
         });
     },
+
     update: (req, res) => {
         const { id } = req.params;
 
@@ -31,4 +34,4 @@ const TreinoController = {
     },
 };
 
-module.exports = TreinoController;
+module.exports = DiaTreinoController;
